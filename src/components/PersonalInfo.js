@@ -1,6 +1,17 @@
 import React, { Component } from "react";
+import Button from "./Button";
 
 export default class PersonalInfo extends Component {
+
+  continue = (e) => {
+    e.preventDefault();
+    this.props.nextStep();
+  };
+
+  back = e => {
+    e.preventDefault();
+    this.props.prevStep();
+  };
   render() {
     return (
       <fieldset>
@@ -15,18 +26,8 @@ export default class PersonalInfo extends Component {
             placeholder="Alternate Contact No."
           />
         </div>
-        <input
-          type="button"
-          name="previous"
-          className="previous action-button-previous"
-          value="Previous"
-        />
-        <input
-          type="button"
-          name="next"
-          className="next action-button"
-          value="Next Step"
-        />
+        <Button btnClicked={this.back} text="Prev Step" />
+        <Button btnClicked={this.continue} text="Next Step"/>
       </fieldset>
     );
   }

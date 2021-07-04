@@ -7,7 +7,8 @@ export default class Button extends Component {
         type="button"
         name="next"
         className="next action-button"
-        value="Next Step"
+        value={this.props.text}
+        onClick={this.props.btnClicked}
       />
     );
   }
