@@ -11,20 +11,25 @@ export default class PaymentInfo extends Component {
     e.preventDefault();
     this.props.prevStep();
   };
+  handleMathodChange = (event) => {
+    this.props.paymentMethodChange(event.target.parentNode.getAttribute('data-value'))
+  }
+  
   render() {
+    const { values, handleChange } = this.props;
     return (
       <fieldset>
         <div className="form-card">
           <h2 className="fs-title">Payment Information</h2>
           <div className="radio-group">
-            <div className="radio" data-value="credit">
+            <div className={values.paymentMethod === 'credit' ? 'radio selected' : 'radio'}  data-value="credit" onClick={(e) => this.handleMathodChange(e)}>
               <img
                 src="https://i.imgur.com/XzOzVHZ.jpg"
                 width="200px"
                 height="100px"
               />
             </div>
-            <div className="radio" data-value="paypal">
+            <div className={values.paymentMethod === 'paypal' ? 'radio selected' : 'radio'}  data-value="paypal" onClick={(e) => this.handleMathodChange(e)}>
               <img
                 src="https://i.imgur.com/jXjwZlj.jpg"
                 width="200px"
@@ -34,15 +39,15 @@ export default class PaymentInfo extends Component {
             <br />
           </div>
           <label className="pay">Card Holder Name*</label>
-          <input type="text" name="holdername" placeholder="" />
+          <input type="text" name="holdername" placeholder="" onChange={handleChange('holdername')} value={values.holdername} />
           <div className="row">
             <div className="col-9">
               <label className="pay">Card Number*</label>
-              <input type="text" name="cardno" placeholder="" />
+              <input type="text" name="cardno" placeholder="" onChange={handleChange('cardno')} value={values.cardno} />
             </div>
             <div className="col-3">
               <label className="pay">CVC*</label>
-              <input type="password" name="cvcpwd" placeholder="***" />
+              <input type="password" name="cvcpwd" placeholder="***" onChange={handleChange('cvcpwd')} value={values.cvcpwd} />
             </div>
           </div>
           <div className="row">

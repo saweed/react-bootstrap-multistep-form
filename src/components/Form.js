@@ -15,7 +15,13 @@ export default class Form extends Component {
     fname: '',
     lname: '',
     phno: '', 
-    phno_2: ''
+    phno_2: '',
+    holdername: '',
+    cardno: '',
+    cvcpwd: '',
+    expmonth: '',
+    expyear: '',
+    paymentMethod: ''
   };
 
   // Proceed to next step
@@ -38,10 +44,28 @@ export default class Form extends Component {
   handleChange = (input) => (e) => {
     this.setState({ [input]: e.target.value });
   };
+  handlePaymentMethod = (method) => {
+    this.setState({
+      ...this.state, paymentMethod: method
+    })
+  }
   render() {
     const { step } = this.state;
-    const { email, username, password, confirmPassword } = this.state;
-    const values = { email, username, password, confirmPassword };
+    const { email,
+    username,
+    password,
+    confirmPassword,
+    fname,
+    lname,
+    phno, 
+    phno_2,
+    holdername,
+    cardno,
+    cvcpwd,
+    expmonth,
+    expyear,
+    paymentMethod } = this.state;
+    const values = { email, username, password, confirmPassword, fname, lname, phno, phno_2, holdername, cardno, cvcpwd, expmonth, expyear, paymentMethod };
     return (
       <div className="row">
         <div className="col-md-12 mx-0">
@@ -71,10 +95,11 @@ export default class Form extends Component {
                     nextStep={this.nextStep}
                     prevStep={this.prevStep}
                     handleChange={this.handleChange}
+                    paymentMethodChange={this.handlePaymentMethod}
                     values={values}
                   />
                 ),
-                4: <Success />,
+                4: <Success values={values} />,
               }[step]
             }
           </form>

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 export default class Success extends Component {
   render() {
+    const { values } = this.props;
     return (
       <fieldset>
         <div className="form-card">
@@ -20,6 +21,13 @@ export default class Success extends Component {
           <div className="row justify-content-center">
             <div className="col-7 text-center">
               <h5>You Have Successfully Signed Up</h5>
+              <ul className="list-group list-group-flush">
+                {
+                  Object.keys(values).map((item, i) => (
+                    <li key={i} className="list-group-item"> {item} {'=>'} {values[item]} </li>
+                  ))
+                }
+              </ul>
             </div>
           </div>
         </div>

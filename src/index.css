@@ -52,7 +52,7 @@ html {
 
 #msform input,
 #msform textarea {
-  padding: 0px 8px 4px 8px;
+  padding: 0px 4px 0px 4px;
   border: none;
   border-bottom: 1px solid #ccc;
   border-radius: 0px;
@@ -61,26 +61,26 @@ html {
   width: 100%;
   box-sizing: border-box;
   font-family: montserrat;
-  color: #2C3E50;
-  font-size: 16px;
-  letter-spacing: 1px
+  color: #000000;
+  font-size: 14px;
 }
 
 #msform input:focus,
-#msform textarea:focus {
+#msform textarea:focus,
+#msform input:active,
+#msform textarea:active {
   -moz-box-shadow: none !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
   border: none;
-  font-weight: bold;
   border-bottom: 2px solid skyblue;
-  outline-width: 0
+  outline-width: 0 !important;
+  outline: none;
 }
 
 #msform .action-button {
   width: 100px;
   background: skyblue;
-  font-weight: bold;
   color: white;
   border: 0 none;
   border-radius: 0px;
